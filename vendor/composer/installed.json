@@ -390,26 +390,25 @@
     },
     {
         "name": "symfony/icu",
-        "version": "v1.2.0",
-        "version_normalized": "1.2.0.0",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
         "target-dir": "Symfony/Component/Icu",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/Icu.git",
-            "reference": "v1.2.0"
+            "reference": "v1.0.0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/Icu/zipball/v1.2.0",
-            "reference": "v1.2.0",
+            "url": "https://api.github.com/repos/symfony/Icu/zipball/v1.0.0",
+            "reference": "v1.0.0",
             "shasum": ""
         },
         "require": {
-            "lib-icu": ">=4.4",
             "php": ">=5.3.3",
             "symfony/intl": ">=2.3,<3.0"
         },
-        "time": "2013-06-03 18:32:58",
+        "time": "2013-06-03 18:32:07",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -947,27 +946,27 @@
     },
     {
         "name": "swiftmailer/swiftmailer",
-        "version": "v5.0.0",
-        "version_normalized": "5.0.0.0",
+        "version": "v5.0.1",
+        "version_normalized": "5.0.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/swiftmailer/swiftmailer.git",
-            "reference": "v5.0.0"
+            "reference": "v5.0.1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/v5.0.0",
-            "reference": "v5.0.0",
+            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/v5.0.1",
+            "reference": "v5.0.1",
             "shasum": ""
         },
         "require": {
             "php": ">=5.2.4"
         },
-        "time": "2013-04-30 17:35:30",
+        "time": "2013-06-17 13:32:32",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "5.0-dev"
+                "dev-master": "5.1-dev"
             }
         },
         "installation-source": "dist",
