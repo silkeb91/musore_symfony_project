@@ -1,0 +1,30 @@
+musore_homepage:
+    pattern:  /
+    defaults: { _controller: AcmeMusoreBundle:Product:index}
+
+album_detail_page:
+    path: /album/{album_id}/{currentSong}
+    defaults: {_controller: AcmeMusoreBundle:Product:albumDetail, currentSong:1}
+
+
+song_detail_page:
+    path: /album/{album_id}/song/{song_id}
+    defaults: {_controller: AcmeMusoreBundle:Product:songDetail}
+
+genre_overview_page:
+    path: /genre/{genre_id}
+    defaults: {_controller:AcmeMusoreBundle:Product:genreOverview}
+
+login:
+    pattern:   /login
+    defaults:  { _controller: AcmeMusoreBundle:Customer:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    path: /logout
+
+register:
+    path: /register/{step}
+    defaults:  { _controller: AcmeMusoreBundle:Customer:register, step:1 }

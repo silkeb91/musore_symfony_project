@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+{% block content%}
+    <div id="breadCrumps">
+        {% block breadCrumps %}
+        {% endblock %}
+    </div>
+    <div id="leftside">
+         {% block leftside %}
+         {% endblock %}
+         <div class="dummy">&nbsp;</div>
+    </div>
+
+    <div id="mainContent">
+         {% block mainContent %}
+         {% endblock %}
+    </div>
+{% endblock %}
+
+

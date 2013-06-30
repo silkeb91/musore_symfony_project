@@ -1,0 +1,40 @@
+#spotlighted{
+    position: relative;
+    height: 190px;
+    margin:0px 25px 0 25px;
+}
+
+#spotlighted a{
+    position: absolute;
+}
+
+#spotlighted a img{
+    width: 95px;
+    height: 90px;
+    -webkit-box-reflect: below 0
+    -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255, 255, 255, 0.3)));
+}
+
+#spotlighted #back_left{
+    left: 0;
+    top: 0px;
+}
+
+#spotlighted #back_left_center{
+    left: 110px;
+    top: 25px;
+}
+#spotlighted #center{
+    left: 225px;
+    top: 43px;
+}
+
+#spotlighted #back_right{
+    right: 0;
+    top: 0px;
+}
+
+#spotlighted #back_right_center{
+    top:25px;
+    right: 110px;
+}

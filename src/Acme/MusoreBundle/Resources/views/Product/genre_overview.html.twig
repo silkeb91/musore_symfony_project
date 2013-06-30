@@ -1,0 +1,129 @@
+{% extends 'AcmeMusoreBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/acmemusore/css/albumList.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/acmemusore/css/formStyles.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block leftside %}
+    <form method="post" action="" id="filterForm">
+        <fieldset>
+            <legend>Genres</legend>
+            <div id="genreChkBoxes">
+                <label for="chkPop">Pop</label><input type="checkbox" id="chkPop" name="genre" value="pop">
+                <label for="chkRock">Rock</label><input type="checkbox" id="chkRock" name="genre" value="rock">
+                <label for="chkAlternative">Altenative</label><input type="checkbox" id="chkAlternative" name="genre" value="alternative">
+                <label for="chkClassic">Classic</label><input type="checkbox" id="chkClassic" name="genre" value="classic">
+                <label for="chkDance">Dance</label><input type="checkbox" id="chkDance" name="genre" value="dance">
+                <label for="chkHipHop">HipHop</label><input type="checkbox" id="chkHipHop" name="genre" value="hipHop">
+                <div class="dummy">&nbsp;</div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Price</legend>
+            <div>
+                <label for="rangeMinPrice">Minimum Price:</label> <span class="sliderPrice">€ 1</span>
+                <input type="range" id="rangeMinPrice" name="rangeMinPrice" min="1" max="100" value="1">
+                <label for="rangeMaxPrice">Maximum Price:</label> <span class="sliderPrice">€ 100</span>
+                <input type="range" id="rangeMaxPrice" name="rangeMaxPrice" min="1" max="100" value="100">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Period</legend>
+            <div>
+                <input type="number" name="from" min="1970" max="2013" value="1970">
+                <label for="maxYear">to</label>
+                <input type="number" id="maxYear" name="to" min="1970" max="2013" value="2013">
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}
+
+{% block mainContent %}
+    <h2>-{{ genre.genre }} music-</h2>
+
+    <section class="albumList">
+        <div class="list_header">
+            <h3>Albums</h3>
+            <form method="post" action="" class="orderForm">
+                <fieldset>
+                    <legend class="hide">Order</legend>
+                    <div>
+                        <label for="dropdown_order_album">Order by</label>
+                        <select id="dropdown_order_album">
+                            <option value="album">Album</option>
+                            <option value="artist">Artist</option>
+                            <option value="popularity">Popularity</option>
+                            <option value="price">Price</option>
+                            <option value="year">Year</option>
+                        </select>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="dummy">&nbsp;</div>
+
+
+        <div class="albums">
+            {% for album in albums %}
+                <div class="album {% if loop.index is divisibleby(5) %}marginRemove{% endif %}">
+                    <a href="{{ path('album_detail_page', {'album_id': album.id ,'currentSong':1}) }}">
+                        <img src="{{asset('bundles/acmemusore/images/music_pics/') }}{{ album.product.artist.name|lower }}/{{ album.product.coverLink }}"/>
+                    </a>
+                    <a href="{{ path('album_detail_page', {'album_id': album.id, 'currentSong':1}) }}" class="album_info">
+                        <span class="lblTitle">{{ album.product.title }}</span> <span class="lblArtist">{{ album.product.artist.name }}</span>
+                    </a>
+
+                </div>
+            {% endfor %}
+        </div>
+
+        <a class="viewAllLink" href="">View all</a>
+
+    </section>
+
+        <div class="dummy">&nbsp;</div>
+        <section class="albumList">
+            <div class="list_header">
+                <h3>Songs</h3>
+                <form method="post" action="" class="orderForm">
+                    <fieldset>
+                        <legend class="hide">Order</legend>
+                        <div>
+                            <label for="dropdown_order_single">Order by</label>
+                            <select id="dropdown_order_single">
+                                <option value="song">Song</option>
+                                <option value="artist">Artist</option>
+                                <option value="popularity">Popularity</option>
+                                <option value="price">Price</option>
+                                <option value="year">Year</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="dummy">&nbsp;</div>
+            <div class="albums">
+                {% for song in songs %}
+                    <div class="album {% if loop.index is divisibleby(5) %}marginRemove{% endif %} ">
+                        <a href="{{ path('song_detail_page', {'song_id': song.id, 'album_id': 0}) }}">
+                            <img src="{{asset('bundles/acmemusore/images/music_pics/') }}{{ song.product.artist.name|lower }}/{{ song.product.coverLink }}"/>
+                        </a>
+                        <a href="{{ path('song_detail_page', {'song_id': song.id, 'album_id': 0}) }}" class="album_info">
+                            <span class="lblTitle">{{ song.product.title }}</span> <span class="lblArtist">{{ song.product.artist.name }}</span>
+                        </a>
+
+                    </div>
+                {% endfor %}
+            </div>
+
+            <a class="viewAllLink" href="">View all</a>
+        </section>
+
+    <div class="dummy">&nbsp;</div>
+{% endblock %}
+
+
+
+

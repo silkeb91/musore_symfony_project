@@ -1,0 +1,7 @@
+parameters:
+#    acme_musore.example.class: Acme\MusoreBundle\Example
+
+services:
+#    acme_musore.example:
+#        class: %acme_musore.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

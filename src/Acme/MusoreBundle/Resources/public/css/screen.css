@@ -1,0 +1,561 @@
+/*colors*/
+/*
+    light red: #d5675e
+    red : #c4544b
+    dark red: #bb5951
+    bordeaux: #823a35
+
+    green: #bebf58
+
+    blue green: #8ab0a6
+
+    white: #fbfbf4
+    beige: #faf9e5
+    dark beige: #e1dfb7
+    dark brown: #d0d0bc
+
+    gray: #555552
+*/
+/*Font*/
+/*
+    light -> font-weight: 300;
+    regular -> font-weight: 400;
+*/
+html, body{
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+body{
+    background-color: #fbfbf4;
+    font-family: 'Lato', sans-serif ;
+    font-weight: 300;
+    color: #555552;
+    font-size: 0.8em;
+    overflow-x: hidden;
+}
+
+p, a, a:visited{
+    color: #555552;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+input:focus{
+    outline: none;
+}
+
+fieldset{
+    border: none;
+}
+
+header, footer{ display: block;}
+
+#container{
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100%;
+}
+
+.hide{
+    color: transparent;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.dummy{
+    clear: both;
+    width:0;
+    height:0;
+}
+
+.clearLeft{
+    clear: left;
+}
+
+h2{
+    color: #bebf58;
+    font-weight: 400;
+    font-size: 1.45em;
+    text-align: center;
+}
+
+h3{
+    margin-top: 0;
+    display: inline-block;
+    font-weight: 300;
+    color: #8ab0a6;
+    font-size: 1.4em;
+}
+
+#content{
+    padding-bottom:60px;
+
+}
+
+/*-------------------------------------Header--------------------------*/
+header{
+    height: 90px;
+    width: 100%;
+    background-color: #c4544b;
+    padding-top: 25px;
+    padding-left: 50px;
+    margin-bottom: 30px;
+}
+
+header p a:link, header p a:visited{
+    text-decoration: underline;
+    color: #faf9e5;
+}
+
+header p{
+    color: #faf9e5;
+}
+
+/***********Logo*********/
+#logo{
+    display: inline-block;
+    float: left;
+}
+
+#logo a{
+    height: 50px;
+    width: 195px;
+    background: url('../images/logo2.svg') no-repeat;
+    background-size: 195px;
+    display: block;
+}
+
+#logo a span{
+    height:50px;
+}
+
+/********Navigation****/
+
+nav {
+    display: inline-block;
+    float: left;
+    clear: right;
+    height: 85px;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    position: relative;
+    border-right: thin solid #823a35;
+}
+
+nav .navText{
+    position: absolute;
+    bottom: 10px;
+    width: 95px;
+
+    text-align: center;
+    color: #faf9e5;
+    font-size: 0.75em;
+}
+
+nav ul li a:hover, .active{
+    border-bottom: 3px solid #bebf58;
+}
+
+
+nav ul li a{
+    width: 95px;
+    height: 74px;
+    display: block;
+    border-bottom: 3px solid transparent;
+}
+
+
+nav ul li:last-child{
+    border-right: none;
+}
+
+#menu_genres{
+    background: url(../images/genres_icon.svg) center 12px no-repeat;
+    background-size: 45px;
+}
+
+#menu_favorites{
+    background: url(../images/favorites_icon.svg) center 12px no-repeat;
+    background-size: 30px;
+}
+
+#menu_downloads{
+    background: url(../images/downloads_icon.svg) center 12px no-repeat;
+    background-size: 30px;
+}
+#menu_login{
+    background: url(../images/login_icon.svg) center 12px no-repeat;
+    background-size: 40px;
+}
+
+#menu_cart{
+    background: url(../images/cart_icon.svg) center 12px no-repeat;
+    background-size: 35px;
+}
+
+
+
+#cartNumber{
+    position: absolute;
+    width: 20px;
+    height: 15px;
+    right: 25px;
+    bottom: 30px;
+    padding-top: 5px;
+    text-align: center;
+    font-size: 0.7em;
+    color: #faf9e5;
+    background-color: #bebf58;
+    border-radius: 90px;
+}
+
+/***********************Searchform****************************/
+header #searchDiv{
+    position: relative;
+    margin-right: 80px;
+    display: inline-block;
+    float: right;
+    clear: right;
+    height: 100%;
+}
+header form{
+    margin-top: -10px;
+    position: relative;
+    height: 30px;
+}
+
+header form input{
+    width: 160px;
+    height: 25px;
+    padding: 0 35px 0 10px;
+    border:none;
+    border-radius: 5px;
+    background: url('../images/search_icon.svg') 95% center no-repeat #faf9e5;
+    background-size: 20px;
+    color: #555552;
+    font-size: 0.9em;
+}
+
+header #searchDiv p{
+    position: relative;
+    text-align: right;
+    margin-right: 15px;
+}
+
+/*-----------------------------------------------Leftside----------------------------------------------*/
+#leftside{
+    min-height: 400px;
+    height: 100%;
+    width: 160px;
+    margin-left: 40px;
+    margin-right: 70px;
+    float: left;
+}
+
+/*------------------------------------------------Footer-----------------------------------------------*/
+footer{
+    height: 35px;
+    background-color: #823a35;
+    font-size: 0.6em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p{
+    color: #faf9e5;
+    margin-left: 40px;
+    padding-top: 5px;
+}
+/*---------------------------------------------MainContent---------------------------------------------*/
+#mainContent{
+    width: 600px;
+    display: inline-block;
+}
+
+.viewAllLink{
+    font-size: 0.85em;
+    text-decoration: underline;
+    float: right;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.viewAllLink:hover{
+    color: #bebf58;
+}
+
+
+/*-------------------------------------Music player------------------------------------------------*/
+#music_preview{
+    width: 150px;
+
+    background-color: #bebf58;
+}
+
+audio{
+    width: 150px;
+}
+.player a{
+    display: inline-block;
+    color: #faf9e5;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    vertical-align:middle;
+}
+.player #play{
+    background: url(../images/play_button.svg) no-repeat;
+}
+
+.player #play:hover{
+    background: url(../images/play_button_red.svg) no-repeat;
+}
+
+.player #previous{
+    margin-right: 30px;
+    margin-left: 10px;
+}
+
+.player #next{
+    margin-left: 30px;
+    margin-right: 10px;
+}
+.player #next:hover, .player #previous:hover{
+    color: #d5675e;
+}
+
+.player input[type='range'] {
+    -webkit-appearance: none;
+    background:#faf9e5;
+    height: 3px;
+    width: 150px;
+    margin-left: 0;
+}
+.player p{
+    color: #faf9e5;
+    font-size: 0.7em;
+    padding-bottom: 10px;
+    font-style: italic;
+    margin-left: 10px;
+}
+
+#music_preview{
+    float: left;
+}
+
+/*---------------------------Music Info---------------------------------------*/
+#album_detail{
+    float: right;
+    clear: right;
+}
+
+#album_detail p{
+    font-weight: 400;
+    text-align: right;
+}
+
+#album_detail p a{
+    text-decoration: underline;
+}
+
+#album_detail p a:hover{
+    color: #bebf58;
+}
+
+#album_detail span{
+    margin-bottom: 10px;
+    display: block;
+}
+
+#album_name{
+    font-size: 2em;
+
+}
+
+#artist_name, #year{
+    font-weight: 300;
+    font-size: 1.3em;
+}
+
+#price{
+    font-size: 1.6em;
+}
+
+.button{
+    display: block;
+    border-radius: 3px;
+    text-align: right;
+}
+
+#added_button{
+    font-weight: 300;
+    float: right;
+    width: 165px;
+    color: #faf9e5;
+    background: url(../images/signed_icon.svg) no-repeat 15px #bebf58;
+    background-size: 22px 24px;
+    padding: 10px 15px;
+    margin-top: 30px;
+}
+
+#cart_button{
+    float: right;
+    width: 165px;
+    color: #faf9e5;
+    background: url(../images/cart_icon.svg) no-repeat 15px #8ab0a6;
+    background-size: 22px 24px;
+    padding: 10px 15px;
+    margin-top: 30px;
+}
+
+#cart_button:hover, #favorites_button:hover{
+    background-color: #bebf58;
+}
+
+#favorites_button{
+    color: #faf9e5;
+    width: 90px;
+    font-size: 0.8em;
+    padding: 6px 15px;
+    background: url(../images/favorites_icon.svg) no-repeat 8px #8ab0a6;
+    background-size: 18px 14px;
+    margin-top: 15px;
+}
+
+/**----------------------BreadCrumps-------------------------------*/
+#breadCrumps{
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+
+#breadCrumps ul li{
+    display: inline-block;
+    list-style: none;
+    margin-right: 5px;
+}
+
+#breadCrumps ul li:not(:first-child){
+    margin-left: 8px;
+}
+
+#breadCrumps ul li a{
+    display: block;
+    height: 11px;
+    font-size: 0.7em;
+    background-color:#d5675e ;
+    padding: 5px 15px;
+    padding-top: 4px;
+    padding-left: 15px;
+    position: relative;
+    color:#fbfbf4;
+    border: 1px solid transparent ;
+}
+
+#breadCrumps ul li a::after {
+    content: "";
+    position: absolute;
+    top: 0%;
+    margin-top: -1px;
+    border-width: 11px 0 11px 11px;
+    border-style: solid;
+    border-color: transparent transparent transparent #d5675e;
+    left: 100%;
+}
+
+#breadCrumps ul li:not(:first-child) a::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -11px;
+    border-width: 11px 0 11px 11px;
+    border-style: solid;
+    border-color: #d5675e #d5675e #d5675e transparent;
+    right: 100%;
+}
+
+#breadCrumps ul li:first-child a{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius:5px;
+}
+
+#breadCrumps ul li a:hover{
+    background: #bebf58;
+}
+
+#breadCrumps ul li:not(:first-child) a:hover:before{
+    border-color: #bebf58 #bebf58 #bebf58 transparent;
+}
+
+#breadCrumps ul li a:hover:after{
+    border-color: transparent transparent transparent #bebf58;
+}
+
+/**---------------Trackoverview--------------**/
+#track_overview{
+    margin-top: 30px;
+}
+#track_overview ol{
+    margin-left: -8px;
+}
+
+#track_overview ol li{
+    border-bottom: thin solid #e1dfb7;
+   line-height: 1.7em;
+}
+
+#track_overview ol li span{
+    display: inline-block;
+}
+
+#track_overview ol .list_background{
+    background-color: #faf9e5;
+}
+
+#track_overview ol li span:not(:last-child){
+    margin-right: 40px;
+}
+
+
+#track_overview ol li span:first-of-type{
+    width: 170px;
+}
+
+#track_overview ol li span:nth-child(2){
+    width: 130px;
+}
+
+#track_overview ol li span:nth-child(3){
+    width: 70px;
+}
+
+#track_overview ol li span:last-child a span{
+    display: none;
+}
+
+#track_overview ol li span:last-child a{
+    margin-top: 5px;
+    display: inline-block;
+    background: url('../images/play_button_red.svg') no-repeat;
+    background-size: 15px 15px;
+    width: 15px;
+    height: 15px;
+}
+
+#track_overview ol li span:last-child a:hover{
+    background: url('../images/play_button_green.svg') center bottom no-repeat;
+    background-size: 15px 15px;
+}
+
+
+
+
+
+
+

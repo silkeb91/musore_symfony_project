@@ -1,0 +1,42 @@
+<?php
+
+namespace Acme\MusoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ */
+class Single{
+    /**
+     * @ORM\id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Product")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     **/
+    private $product;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $length;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $previewLink;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AlbumTrack", mappedBy="single")
+     */
+    protected $albumTracks;
+
+    public function __construct(){
+        $this->albumTracks = new ArrayCollection();
+    }
+}

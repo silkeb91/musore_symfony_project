@@ -1,0 +1,186 @@
+{% extends 'AcmeMusoreBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/acmemusore/css/albumList.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block breadCrumps %}
+    <ul>
+        <li><a href="{{ path('genre_overview_page', {'genre_id':album.product.genre.id}) }}">{{ album.product.genre.genre }}</a></li>
+        <li><a>{{ album.product.artist.name }}</a></li>
+        <li><a>{{ albumName }}</a></li>
+    </ul>
+{% endblock %}
+
+{% block leftside %}
+    <h3>Other Albums</h3>
+    <div class="albums">
+        <div class="album">
+            <a href="">
+                <img src="{{ asset('bundles/acmemusore/images/music_pics/abba/gold.jpg') }}"/></a>
+            <a href="" class="album_info">
+                <span class="lblTitle">Gold</span> <span class="lblArtist">Abba</span>
+            </a>
+
+        </div>
+        <div class="album">
+            <a href="">
+                <img src="{{ asset('bundles/acmemusore/images/music_pics/adele/21.jpg') }}"/> </a>
+            <a href="" class="album_info">
+                <span class="lblTitle">21</span> <span class="lblArtist">Adele</span>
+            </a>
+
+        </div>
+        <div class="album">
+            <a href="">
+                <img src="{{ asset('bundles/acmemusore/images/music_pics/agnus%20&%20julia%20stone/big_jet_plane.jpg') }}"/></a>
+            <a href="" class="album_info">
+                <span class="lblTitle">Big Jet Plane, wat zou er gebeurren??</span> <span class="lblArtist">Agnus & Julia Stone</span>
+            </a>
+
+        </div>
+
+    </div>
+{% endblock %}
+{% block mainContent %}
+    <div id="music_preview">
+        <img src="{{asset('bundles/acmemusore/images/music_pics/') }}{{ album.product.artist.name|lower }}/{{ album.product.coverLink }}"/>
+
+        <!--<audio controls>
+            <source src="music_preview/agnus%20&%20julia%20stone/big_jet_plane.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>-->
+        <div class="player">
+            <a class="player_button" id="previous" href="#" title="">&#060;&#060;</a>
+            <a class="player_button" id="play" href="" title=""></a>
+            <a class="player_button" id="next" href="#" title="">&#062;&#062;</a>
+
+            <input type="range" id="seek" value="0" max=""/>
+            <p>{{ album.product.title }}</p>
+        </div><!-- / player -->
+
+    </div>
+    <div id="album_detail">
+        <p><span id="album_name">{{ album.product.title }}</span> <a href=""><span id="artist_name">{{ album.product.artist.name }}</span></a> <span id="year">{{ album.product.releaseDate|date("m-Y") }}</span> <span id="price">€ {{ album.product.price|number_format(2, ',') }}</span></p>
+
+        <a href="" id="cart_button" class="button">Add to Shopping Cart</a>
+
+    </div>
+    <div class="dummy">&nbsp;</div>
+    <a href="" id="favorites_button" class="button">Add to Favorites</a>
+
+    <section class="albumList">
+        <div class="list_header">
+            <h3>Albums from {{ album.product.artist.name }}</h3>
+        </div>
+        <div class="dummy">&nbsp;</div>
+        <div class="albums">
+            {% for album in other %}
+                <div class="album {% if loop.index is divisibleby(5) %}marginRemove{% endif %}">
+                    <a href="{{ path('album_detail_page', {'album_id': album.id})}}">
+                        <img src="{{asset('bundles/acmemusore/images/music_pics/') }}{{ album.product.artist.name|lower }}/{{ album.product.coverLink }}"/>
+                    </a>
+                    <a href="{{ path('album_detail_page', {'album_id': album.id})}}" class="album_info">
+                        <span class="lblTitle">{{ album.product.title }}</span> <span class="lblArtist">{{ album.product.artist.name }}</span>
+                    </a>
+
+                </div>
+            {% endfor %}
+        </div>
+
+    </section>
+
+    <div class="dummy">&nbsp;</div>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/acmemusore/js/libs/jquery-1.9.1.min.js') }}" type="text/javascript"></script>
+    <script>
+
+        var autoPlayNeeded = false;
+        var song;
+        var fullLink = "";
+
+        $(document).ready(function(){
+            init();
+        });
+
+        function init(){
+            if(autoPlayNeeded == null){autoPlayNeeded = true;}
+            var artist = "{{ album.product.artist.name| escape('js') }}".toLowerCase();
+            var previewLink = "{{ album.previewLink }}";
+
+            var link = 'bundles/acmemusore/' + "music_preview/" + artist + "/" + previewLink;
+
+            fullLink = "{{ asset('test') }}";
+            fullLink = fullLink.replace('test', link);
+
+            song = new Audio(fullLink);
+
+            var duration = song.duration;
+
+            checkSong();
+        }
+
+        function checkSong(){
+            if (song.canPlayType('audio/mpeg;')) {
+                song.type= 'audio/mpeg';
+                song.src= fullLink;
+
+            } else {
+                alert("mislukt");
+            }
+
+            $("#play").click(playHandler);
+            $("#pause").click(pauseHandler);
+
+            $("#seek").bind("change", function() {
+                song.currentTime = $(this).val();
+                $("#seek").attr("max", song.duration);
+            });
+
+
+            song.addEventListener('timeupdate',function (){
+                curtime = parseInt(song.currentTime, 10);
+                $("#seek").attr("value", curtime);
+            });
+
+            if(autoPlayNeeded){
+                autoPlay();
+            }
+        }
+
+        function playHandler(e){
+            e.preventDefault();
+            autoPlayNeeded = true;
+            autoPlay();
+        }
+
+        function pauseHandler(e){
+            e.preventDefault();
+
+            song.pause();
+
+            $('#pause').replaceWith('<a class="button" id="play" href="" title=""></a>');
+            $('#pause').removeEventListener('click', pauseHandler);
+            $('#play').addEventListener('click', playHandler);
+
+
+            $('#seek').attr('max',song.duration);
+            autoPlayNeeded = false;
+        }
+
+
+        function autoPlay(){
+            autoPlayNeeded = false;
+            song.play();
+            $('#play').replaceWith('<a class="button" id="pause" href="" title="">||</a>');
+            $('#play').removeEventListener('click', playHandler);
+            $('#pause').addEventListener('click', pauseHandler);
+            $('#seek').attr('max',song.duration);
+        }
+
+    </script>
+{% endblock %}
+

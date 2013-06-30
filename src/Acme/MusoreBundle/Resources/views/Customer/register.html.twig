@@ -1,0 +1,20 @@
+{% extends 'AcmeMusoreBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/acmemusore/css/customer.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block breadCrumps %}
+    <ul>
+        <li><a href="{{ path('register', {'step': 1}) }}">Step 1/3: General Information</a></li>
+        <li><a href="{{ path('register', {'step': 2}) }}">Step 2/3: Payment Information</a></li>
+    </ul>
+{% endblock %}
+
+{% block mainContent %}
+    <h2>-Register-</h2>
+    <h3>Step 1: General Information</h3>
+    {{ form(form) }}
+
+{% endblock %}

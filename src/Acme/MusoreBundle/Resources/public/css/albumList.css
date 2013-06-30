@@ -1,0 +1,69 @@
+/**********AlbumList***************/
+.list_header{
+    padding: 0;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.albumList{
+    margin-top: 20px;
+}
+
+.album{
+    float:left;
+    display: inline-block;
+    width: 97px;
+    height: 97px;
+    margin-right: 26px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.marginRemove{
+    margin-right: 0px;
+}
+
+.album a img{
+    width: 95px;
+    height: 95px;
+}
+
+.album_info{
+    position: absolute;
+    left: -3px;
+    bottom: 5px;
+    width: 80px;
+    height: 30px;
+    background-color:#8ab0a6;
+    display: inline-block;
+    color: #faf9e5;
+    padding-left: 10px;
+    -webkit-box-shadow: -2px 3px 3px rgba(77, 79, 75, 0.5);
+    -moz-box-shadow:    -2px 3px 3px rgba(77, 79, 75, 0.5);
+    box-shadow:         -2px 3px 3px rgba(77, 79, 75, 0.5);
+}
+.album_info span{
+    display: block;
+    margin-top: 2px;
+    max-width: 75px;
+    line-height: 1.4em;
+    overflow: hidden;
+}
+.album_info .lblTitle{
+    font-size: 0.8em;
+    max-height: 13px;
+}
+
+.album_info .lblArtist{
+    font-size: 0.55em;
+    display: block;
+    max-height: 10px;
+}
+
+.album_info:visited{
+    color: #faf9e5;
+}
+
+.album_info:hover{
+    background-color: #bebf58;
+}

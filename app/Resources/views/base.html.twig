@@ -1,13 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{% block title %}Musore{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+        <link href="{{ asset('bundles/acmemusore/css/screen.css') }}" rel="stylesheet" type="text/css"/>
+    {% endblock %}
+</head>
+<body>
+<div id="container">
+    <header>
+        <div id="logo">
+            <h1><a href="{{ path('musore_homepage') }}"><span class="hide">Musore, You're online music store</span></a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ path('musore_homepage') }}" id="menu_genres" {% if app.request.get('_route') == 'musore_homepage' or app.request.get('_route') == 'album_detail_page' or app.request.get('_route') == 'song_detail_page' or app.request.get('_route') == 'genre_overview_page'%} class="active"{% endif %}><span class="navText">Albums</span></a></li>
+                {% if app.user %}
+                    <li><a href="" id="menu_favorites"><span class="navText">My Favorites</span></a></li>
+                    <li><a href="" id="menu_downloads"><span class="navText">My Downloads</span></a></li>
+                {% endif %}
+                {% if not app.user %}
+                    <li><a href="{{ path('login') }}" id="menu_login" {% if app.request.get('_route') == 'login' %} class="active"{% endif %}><span class="navText">Login</span></a></li>
+                {% endif %}
+
+                <li><a href="" id="menu_cart"><span id="cartNumber">2</span><span class="navText">Shopping Cart</span></a></li>
+            </ul>
+        </nav>
+        <div id="searchDiv">
+            {% block userInfo %}
+                <p id="userInfo">
+                    {% if app.user %}
+                        Hello {{ app.user.username }}  -  <a href="{{ path('logout') }}">Logout</a>
+                    {% endif %}
+                </p>
+            {% endblock %}
+            <form method="get" action="">
+                <fieldset>
+                    <legend class="hide">Search</legend>
+                    <div>
+                        <label class="hide" for="txtSearch">Search:</label>
+                        <input type="text" name="txtSearch" id="txtSearch" value=""/>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </header>
+    <div class="dummy">&nbsp;</div>
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+        <footer>
+            <p>&copy; 2013 Silke Bauwens</p>
+        </footer>
+</div>
+    {% block javascripts %}
+    {% endblock %}
+</body>
 </html>
+

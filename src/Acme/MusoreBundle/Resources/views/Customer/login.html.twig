@@ -1,0 +1,30 @@
+{% extends 'AcmeMusoreBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/acmemusore/css/customer.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+
+{% block mainContent %}
+    <h2>- Log in - </h2>
+
+    {% if error %}
+        <div>{{ error.message }}</div>
+    {% endif %}
+
+        <form id="loginform" action="{{ path('login_check') }}" method="post">
+
+            <label for="username">Username:</label>
+            <input type="text" placeholder="Username" id="username" name="_username" value="{{ last_username }}"/>
+
+            <label for="password">Password:</label>
+            <input type="password" placeholder="Password" id="password" name="_password""/>
+
+            <div>
+                <p id="noLogin">No login yet? <a href="{{ path('register') }}">Register now.</a></p>
+                <button type="submit">Log in</button>
+            </div>
+        </form>
+
+{% endblock %}
